@@ -156,6 +156,9 @@ spec:
         - name: juicefs-config
           mountPath: /etc/config
         {{- end }}
+        {{- if .Values.node.additionalVolumesMounts }}
+{{ toYaml .Values.node.additionalVolumesMounts | indent 8 }}
+        {{- end }}
         lifecycle:
           preStop:
             exec:
@@ -265,5 +268,8 @@ spec:
       - name: juicefs-config
         configMap:
           name: {{ include "juicefs-csi.fullname" . }}-config
+      {{- end }}
+      {{- if .Values.node.additionalVolumes }}
+{{ toYaml .Values.node.additionalVolumes | indent 6 }}
       {{- end }}
 {{- end }}

@@ -243,6 +243,10 @@ node:
   #  - name: ENABLE_APISERVER_LIST_CACHE
   #    value: "true"
   envs: []
+  # List of volumes that can be mounted by containers belonging to the pod.
+  additionalVolumes: [ ]
+  # Pod volumes to mount into the container's filesystem.
+  additionalVolumesMounts: [ ]
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 50%
